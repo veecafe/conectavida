@@ -1,0 +1,112 @@
+/* Importação da fonte */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+/* Paleta — Azul Oceano */
+:root {
+    --bs-primary: #0ea5e9;
+    --bs-primary-rgb: 14, 165, 233;
+    --bs-font-sans-serif: 'Plus Jakarta Sans', sans-serif;
+}
+
+.bg-primary {
+    background-color: #0ea5e9 !important;
+}
+
+.btn-primary {
+    background-color: #0ea5e9;
+    border-color: #0ea5e9;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+    background-color: #0284c7 !important;
+    border-color: #0284c7 !important;
+}
+
+.text-primary {
+    color: #0ea5e9 !important;
+}
+
+.btn-outline-primary {
+    color: #0ea5e9;
+    border-color: #0ea5e9;
+}
+
+.btn-outline-primary:hover {
+    background-color: #0ea5e9;
+    border-color: #0ea5e9;
+    color: white;
+}
+
+.navbar-dark.bg-primary {
+    background-color: #0ea5e9 !important;
+}
+
+/* Tipografia editorial */
+body {
+    background-color: #fafafa;
+    color: #1e293b;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+}
+
+.display-4 {
+    font-weight: 800;
+    letter-spacing: -0.035em;
+}
+
+.lead {
+    font-weight: 400;
+    color: #64748b;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+/* Cards minimalistas */
+.card {
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: none;
+    transition: all 0.2s ease;
+}
+
+.feature-card {
+    background: white !important;
+}
+
+/* Botões */
+.btn {
+    border-radius: 8px;
+    padding: 0.5rem 1.25rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+}
+
+.btn-lg {
+    padding: 0.75rem 1.75rem;
+}
+
+/* Ícones */
+.bi {
+    vertical-align: -0.125em;
+}
+
+.icon-large {
+    font-size: 3rem;
+    color: #0ea5e9;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.icon-stat {

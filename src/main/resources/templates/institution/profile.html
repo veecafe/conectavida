@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Perfil Institucional</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="container py-4">
+  <h2 class="text-primary mb-4">Perfil da Instituição</h2>
+  <div th:if="${param.updated}" class="alert alert-success">Perfil atualizado!</div>
+
+  <div class="card">
+    <div class="card-body">
+      <form th:action="@{/institution/profile}" method="post">
+        <div class="mb-3">
+          <label class="form-label">CNPJ</label>
+          <input type="text" name="cnpj" class="form-control" th:value="${institution.cnpj}">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Descrição</label>
+          <textarea name="description" class="form-control" rows="3" th:text="${institution.description}"></textarea>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Telefone</label>
+          <input type="text" name="phone" class="form-control" th:value="${institution.phone}">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Website</label>
+          <input type="text" name="website" class="form-control" th:value="${institution.website}">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">CEP</label>
+          <input type="text" name="cep" class="form-control" th:value="${institution.cep}">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Endereço</label>
+          <input type="text" name="address" class="form-control" th:value="${institution.address}">
+        </div>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+        <a th:href="@{/institution/dashboard}" class="btn btn-link">Voltar</a>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+</html>

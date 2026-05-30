@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Gerenciar Especialidades</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="container py-4">
+  <h2 class="text-primary mb-4">Especialidades cadastradas</h2>
+
+  <div class="card mb-4">
+    <div class="card-header"><strong>Nova especialidade</strong></div>
+    <div class="card-body">
+      <form th:action="@{/admin/specialties}" method="post" class="row g-2">
+        <div class="col-md-10">
+          <input type="text" name="name" class="form-control" placeholder="Nome" required>
+        </div>
+        <div class="col-md-2">
+          <button class="btn btn-primary w-100" type="submit">Adicionar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="card">
+    <table class="table table-striped mb-0">
+      <thead>
+      <tr><th>ID</th><th>Nome</th><th></th></tr>
+      </thead>
+      <tbody>
+      <tr th:each="s : ${specialties}">
+        <td th:text="${s.id}"></td>
+        <td th:text="${s.name}"></td>
+        <td>
+          <form th:action="@{'/admin/specialties/delete/' + ${s.id}}" method="post">
+            <button class="btn btn-sm btn-outline-danger" type="submit">Excluir</button>
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>

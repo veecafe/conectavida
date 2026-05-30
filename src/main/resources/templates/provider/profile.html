@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Meu Perfil</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="container py-4">
+  <h2 class="text-primary mb-4">Meu Perfil Profissional</h2>
+  <div th:if="${param.updated}" class="alert alert-success">Perfil atualizado!</div>
+
+  <div class="card">
+    <div class="card-body">
+      <form th:action="@{/provider/profile}" method="post">
+        <div class="mb-3">
+          <label class="form-label">Profissão</label>
+          <input type="text" name="profession" class="form-control" placeholder="Ex: Médico, Psicólogo" th:value="${provider.profession}">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Registro Profissional (CRM, CRP etc.)</label>
+          <input type="text" name="registrationNumber" class="form-control" th:value="${provider.registrationNumber}">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Bio</label>
+          <textarea name="bio" class="form-control" rows="3" th:text="${provider.bio}"></textarea>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Telefone</label>
+          <input type="text" name="phone" class="form-control" th:value="${provider.phone}">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">CEP</label>
+          <input type="text" name="cep" class="form-control" th:value="${provider.cep}">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Endereço</label>
+          <input type="text" name="address" class="form-control" th:value="${provider.address}">
+        </div>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+        <a th:href="@{/provider/dashboard}" class="btn btn-link">Voltar</a>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+</html>

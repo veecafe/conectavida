@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Meu Painel</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="container py-5">
+  <div class="mb-5">
+    <h2 class="fw-bold mb-1">Olá, <span th:text="${patient.user.name}"></span></h2>
+    <p class="text-muted">Bem-vindo ao seu painel.</p>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card h-100 p-4 text-center">
+        <div>
+          <i class="bi bi-person-vcard icon-large"></i>
+        </div>
+        <h4 class="fw-bold">Meu Perfil</h4>
+        <p class="text-muted mb-4">Atualize seus dados pessoais e de contato.</p>
+        <div class="mt-auto">
+          <a th:href="@{/patient/profile}" class="btn btn-primary px-4">Gerenciar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card h-100 p-4 text-center">
+        <div>
+          <i class="bi bi-clipboard2-pulse icon-large"></i>
+        </div>
+        <h4 class="fw-bold">Minhas Doenças</h4>
+        <p class="text-muted mb-4">
+          <span th:text="${patient.diseases.size()}"></span> cadastrada(s)
+        </p>
+        <div class="mt-auto">
+          <a th:href="@{/patient/diseases}" class="btn btn-primary px-4">Gerenciar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card h-100 p-4 text-center">
+        <div>
+          <i class="bi bi-search-heart icon-large"></i>
+        </div>
+        <h4 class="fw-bold">Buscar Profissionais</h4>
+        <p class="text-muted mb-4">Encontre o profissional ideal para você.</p>
+        <div class="mt-auto">
+          <a th:href="@{/search}" class="btn btn-primary px-4">Buscar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

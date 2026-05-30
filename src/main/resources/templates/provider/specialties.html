@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Minhas Especialidades</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="container py-4">
+  <h2 class="text-primary mb-4">Minhas Especialidades</h2>
+
+  <div class="card mb-4">
+    <div class="card-header"><strong>Adicionar especialidade</strong></div>
+    <div class="card-body">
+      <form th:action="@{/provider/specialties/add}" method="post" class="row g-2">
+        <div class="col-md-9">
+          <select name="specialtyId" class="form-select" required>
+            <option value="">Selecione...</option>
+            <option th:each="s : ${allSpecialties}" th:value="${s.id}" th:text="${s.name}"></option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <button class="btn btn-primary w-100" type="submit">Adicionar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><strong>Especialidades cadastradas</strong></div>
+    <ul class="list-group list-group-flush">
+      <li th:if="${provider.specialties.empty}" class="list-group-item text-muted">Nenhuma especialidade cadastrada.</li>
+      <li th:each="s : ${provider.specialties}" class="list-group-item d-flex justify-content-between align-items-center">
+        <strong th:text="${s.name}"></strong>
+        <form th:action="@{/provider/specialties/remove}" method="post">
+          <input type="hidden" name="specialtyId" th:value="${s.id}">
+          <button class="btn btn-sm btn-outline-danger" type="submit">Remover</button>
+        </form>
+      </li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

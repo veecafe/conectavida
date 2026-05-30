@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Buscar Profissionais</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="container py-4">
+  <h2 class="text-primary mb-4">Buscar Profissionais</h2>
+
+  <div class="card mb-4">
+    <div class="card-body">
+      <form th:action="@{/search}" method="get" class="row g-3">
+        <div class="col-md-5">
+          <label class="form-label">Especialidade</label>
+          <select name="specialtyId" class="form-select">
+            <option value="">Todas</option>
+            <option th:each="s : ${specialties}" th:value="${s.id}" th:text="${s.name}"></option>
+          </select>
+        </div>
+        <div class="col-md-5">
+          <label class="form-label">Profissão</label>
+          <input type="text" name="profession" class="form-control" placeholder="Ex: Médico, Psicólogo">
+        </div>
+        <div class="col-md-2 d-flex align-items-end">
+          <button type="submit" class="btn btn-primary w-100">Buscar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="row">
+    <div th:if="${providers.empty}" class="col-12">
+      <div class="alert alert-info">Nenhum profissional encontrado. Tente outros filtros.</div>
+    </div>
+
+    <div th:each="p : ${providers}" class="col-md-6 mb-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title" th:text="${p.user.name}">Nome</h5>
+          <h6 class="text-muted" th:text="${p.profession}">Profissão</h6>
+          <p class="mb-2"><strong>Registro:</strong> <span th:text="${p.registrationNumber}"></span></p>
+          <p class="mb-2"><strong>Local:</strong> <span th:text="${p.address}"></span></p>
+          <p th:text="${p.bio}"></p>
+          <div>
+            <span th:each="esp : ${p.specialties}" class="badge bg-info me-1" th:text="${esp.name}"></span>
+          </div>
+          <p class="mt-2 mb-0"><strong>📞 </strong><span th:text="${p.phone}"></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
